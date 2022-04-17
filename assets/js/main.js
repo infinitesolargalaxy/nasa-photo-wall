@@ -287,7 +287,7 @@
 				startDate.setDate(startDate.getDate() - 11);
 				const startDateString = startDate.toISOString().slice(0,10);
 			
-				const url = `https://api.nasa.gov/planetary/apod?api_key=VsnSaEa2AGyFbfzSWizDr9mQbVYquSe46RAeuS1A&start_date=${startDateString}&thumbs=true`
+				const url = `https://api.nasa.gov/planetary/apod?api_key=nrpOfiPE2Zqghe4FWcgHtvyLPnY50LPGPZAmT7CR&start_date=${startDateString}&thumbs=true`
 				fetch(url)
 					.then(res => res.json()) // parse response as JSON
 					.then(data => {
