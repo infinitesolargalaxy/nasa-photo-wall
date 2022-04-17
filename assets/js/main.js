@@ -285,28 +285,36 @@
 			function getNasaPhotos($main, $body) {
 				const startDate = new Date();
 				startDate.setDate(startDate.getDate() - 11);
-				console.log(startDate, startDate.toISOString().slice(0,10));
 				const startDateString = startDate.toISOString().slice(0,10);
 			
 				const url = `https://api.nasa.gov/planetary/apod?api_key=VsnSaEa2AGyFbfzSWizDr9mQbVYquSe46RAeuS1A&start_date=${startDateString}&thumbs=true`
 				fetch(url)
 					.then(res => res.json()) // parse response as JSON
 					.then(data => {
-						console.log(data)
-						// if (data.media_type === 'image') {
-						// 	document.querySelector('img').src = data.hdurl;
-						// } else if (data.media_type === 'video') {
-						// 	document.querySelector('iframe').src = data.url;
-						// }
-						// document.querySelector('h3').innerText = data.explanation;
-						// console.log();
-						const wall = document.querySelectorAll('.thumb > a.image');
-						wall.forEach((imageLink, idx) => {
+						const wall = document.querySelectorAll('.thumb');
+						wall.forEach((article, idx) => {
 							const nasaData = data[idx];
-							console.log(imageLink);
-							imageLink.href = nasaData.hdurl;
-							imageLink.firstChild.src = nasaData.url;
-							// console.log(imageLink.find('h2'));
+							const imageLink = article.children[0];
+
+							if (nasaData.media_type === 'image') {
+								imageLink.href = nasaData.hdurl;
+								imageLink.firstChild.src = nasaData.url;
+							} else if (nasaData.media_type === 'video') {
+								imageLink.href = nasaData.thumbnail_url;
+								imageLink.firstChild.src = nasaData.thumbnail_url;
+							}
+
+							const imageTitle = article.children[1];
+							imageTitle.innerText = nasaData.title;
+
+							if ('copyright' in nasaData) {
+								imageTitle.innerHTML += `<br>&copy; ${nasaData.copyright}`
+							} else {
+								imageTitle.innerHTML += `<br>&copy; NASA`
+							}
+
+							const imageExplanation = article.children[2];
+							imageExplanation.innerText = nasaData.explanation;
 						});
 						
 						createThumbs($main);

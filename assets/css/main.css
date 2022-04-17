@@ -1284,6 +1284,10 @@ input, select, textarea {
 
 			.poptrox-popup .caption p {
 				color: #ffffff;
+				-webkit-line-clamp: 2;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 			}
 
 		.poptrox-popup .loader {
@@ -1656,6 +1660,7 @@ input, select, textarea {
 
 			#main .thumb > p {
 				display: none;
+				
 			}
 
 		#main:after {
@@ -2048,3 +2053,9 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
+/* Honeypot */
+
+.smalli {
+	display: none;
+}
