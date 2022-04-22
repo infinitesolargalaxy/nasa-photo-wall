@@ -8,7 +8,6 @@
 
 	var	$window = $(window),
 		$body = $('body'),
-		$wrapper = $('#wrapper');
 
 	// Breakpoints.
 		breakpoints({
