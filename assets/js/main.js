@@ -7,7 +7,7 @@
 (function($) {
 
 	var	$window = $(window),
-		$body = $('body'),
+		$body = $('body');
 
 	// Breakpoints.
 		breakpoints({
@@ -283,7 +283,7 @@
 		
 			function getNasaPhotos($main, $body) {
 				const startDate = new Date();
-				startDate.setDate(startDate.getDate() - 11);
+				startDate.setDate(startDate.getDate() - 12);
 				const startDateString = startDate.toISOString().slice(0,10);
 			
 				const url = `https://api.nasa.gov/planetary/apod?api_key=nrpOfiPE2Zqghe4FWcgHtvyLPnY50LPGPZAmT7CR&start_date=${startDateString}&thumbs=true`
