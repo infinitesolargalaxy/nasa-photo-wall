@@ -281,47 +281,46 @@
 				});
 		}
 		
-			function getNasaPhotos($main, $body) {
+			async function getNasaPhotos($main, $body) {
 				const startDate = new Date();
 				startDate.setDate(startDate.getDate() - 12);
 				const startDateString = startDate.toISOString().slice(0,10);
 			
 				const url = `https://api.nasa.gov/planetary/apod?api_key=nrpOfiPE2Zqghe4FWcgHtvyLPnY50LPGPZAmT7CR&start_date=${startDateString}&thumbs=true`
-				fetch(url)
-					.then(res => res.json()) // parse response as JSON
-					.then(data => {
-						const wall = document.querySelectorAll('.thumb');
-						wall.forEach((article, idx) => {
-							const nasaData = data[idx];
-							const imageLink = article.children[0];
+				try {
+					const res = await fetch(url)
+					const data = await res.json()
+					const wall = document.querySelectorAll('.thumb');
+					wall.forEach((article, idx) => {
+						const nasaData = data[idx];
+						const imageLink = article.children[0];
 
-							if (nasaData.media_type === 'image') {
-								imageLink.href = nasaData.hdurl;
-								imageLink.firstChild.src = nasaData.url;
-							} else if (nasaData.media_type === 'video') {
-								imageLink.href = nasaData.thumbnail_url;
-								imageLink.firstChild.src = nasaData.thumbnail_url;
-							}
+						if (nasaData.media_type === 'image') {
+							imageLink.href = nasaData.hdurl;
+							imageLink.firstChild.src = nasaData.url;
+						} else if (nasaData.media_type === 'video') {
+							imageLink.href = nasaData.thumbnail_url;
+							imageLink.firstChild.src = nasaData.thumbnail_url;
+						}
 
-							const imageTitle = article.children[1];
-							imageTitle.innerText = nasaData.title;
+						const imageTitle = article.children[1];
+						imageTitle.innerText = nasaData.title;
 
-							if ('copyright' in nasaData) {
-								imageTitle.innerHTML += `<br>&copy; ${nasaData.copyright}`
-							} else {
-								imageTitle.innerHTML += `<br>&copy; NASA`
-							}
+						if ('copyright' in nasaData) {
+							imageTitle.innerHTML += `<br>&copy; ${nasaData.copyright}`
+						} else {
+							imageTitle.innerHTML += `<br>&copy; NASA`
+						}
 
-							const imageExplanation = article.children[2];
-							imageExplanation.innerText = nasaData.explanation;
-						});
-						
-						createThumbs($main);
-						createPoptrox($main, $body);
-					})
-					.catch(err => {
-						console.log(`error ${err}`)
+						const imageExplanation = article.children[2];
+						imageExplanation.innerText = nasaData.explanation;
 					});
+					
+					createThumbs($main);
+					createPoptrox($main, $body);
+				} catch(err) {
+					console.error(`error ${err}`)
+				}
 			}
 		getNasaPhotos($main, $body);
 
