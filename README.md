@@ -1,12 +1,12 @@
 # nasa-photo-wall
 
-<img alt="Website" src="https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fnasa-photo-wall.netlify.app%2F">
-
-<img alt="GitHub" src="https://img.shields.io/github/license/infinitesolargalaxy/nasa-photo-wall?style=flat-square">
-
 A photo wall of NASA's beautiful Astronomy Picture of the Day from the last 12 days.
 
-**[Visit Here](https://nasa-photo-wall.netlify.app/)**
+<a href="https://nasa-photo-wall.netlify.app/" rel="nofollow">
+    <img alt="Website" src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=cdf998&style=for-the-badge&logo=googlechrome&logo-color=white">
+</a>
+
+<img alt="Website Status" src="https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fnasa-photo-wall.netlify.app%2F"> <img alt="GitHub" src="https://img.shields.io/github/license/infinitesolargalaxy/nasa-photo-wall?style=flat-square">
 
 | Desktop | Mobile |
 |---|---|
