@@ -4,11 +4,6 @@
 
 <img alt="GitHub" src="https://img.shields.io/github/license/infinitesolargalaxy/nasa-photo-wall?style=flat-square">
 
-[![CC BY 4.0][cc-by-image]][cc-by]
-
-[cc-by]: http://creativecommons.org/licenses/by/3.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-
 A photo wall of NASA's beautiful Astronomy Picture of the Day from the last 12 days.
 
 **[Visit Here](https://nasa-photo-wall.netlify.app/)**
